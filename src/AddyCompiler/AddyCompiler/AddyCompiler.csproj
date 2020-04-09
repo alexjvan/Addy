@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CD523E5D-8554-4002-89DA-18F51414D96D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AddyCompiler</RootNamespace>
+    <AssemblyName>AddyCompiler</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Addy.cs" />
+    <Compile Include="Lexer\Lillianne.cs" />
+    <Compile Include="Node\AdditionNode.cs" />
+    <Compile Include="Node\BuildingNode.cs" />
+    <Compile Include="Node\ColonNode.cs" />
+    <Compile Include="Node\CommaNode.cs" />
+    <Compile Include="Node\DivisionNode.cs" />
+    <Compile Include="Node\DoNode.cs" />
+    <Compile Include="Node\ElseNode.cs" />
+    <Compile Include="Node\ForNode.cs" />
+    <Compile Include="Node\Generics\ValueNode.cs" />
+    <Compile Include="Node\IdentifierNode.cs" />
+    <Compile Include="Node\IfNode.cs" />
+    <Compile Include="Node\KeywordNode.cs" />
+    <Compile Include="Node\LetterKeywordNode.cs" />
+    <Compile Include="Node\LogicKeywordNode.cs" />
+    <Compile Include="Node\LogicNode.cs" />
+    <Compile Include="Node\LoopNode.cs" />
+    <Compile Include="Node\MultiplicationNode.cs" />
+    <Compile Include="Node\NodeType.cs" />
+    <Compile Include="Node\NumKeywordNode.cs" />
+    <Compile Include="Node\NumNode.cs" />
+    <Compile Include="Node\OperatorNode.cs" />
+    <Compile Include="Node\PeriodNode.cs" />
+    <Compile Include="Node\PunctuationNode.cs" />
+    <Compile Include="Node\QuestionNode.cs" />
+    <Compile Include="Node\SemiColonNode.cs" />
+    <Compile Include="Node\SingleLocNode.cs" />
+    <Compile Include="Node\StatementNode.cs" />
+    <Compile Include="Node\SubtractionNode.cs" />
+    <Compile Include="Node\SwitchNode.cs" />
+    <Compile Include="Node\TextKeywordNode.cs" />
+    <Compile Include="Node\TextNode.cs" />
+    <Compile Include="Node\ValueNode.cs" />
+    <Compile Include="Node\WhileNode.cs" />
+    <Compile Include="Parser\Bobbi.cs" />
+    <Compile Include="Recognizer\Martha.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
