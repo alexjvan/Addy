@@ -7,7 +7,30 @@ using System.Threading.Tasks;
 
 namespace AddyCompiler.Node
 {
-	public class RootNode : ParserNode<RequiredOrNode<CompilerDeclarationNode, RequiredOrNode<ImportNode, RequiredOrNode<ClassDeclarationNode, RequiredOrNode<SwitchDeclarationNode, RequiredOrNode<GuideDeclarationNode, RequiredOrNode<FunctionDeclarationNode, GenericStatementNode>>>>>>>
+	public class RootNode : ParserNode<
+		RequiredOrNode<
+			RequiredNode<CompilerDeclarationNode>,
+			RequiredOrNode<
+				RequiredNode<ImportNode>,
+				RequiredOrNode<
+					RequiredNode<ClassDeclarationNode>,
+					RequiredOrNode<
+						RequiredNode<GuideDeclarationNode>,
+						RequiredOrNode<
+							RequiredNode<SwitchDeclarationNode>,
+							RequiredOrNode<
+								RequiredNode<FunctionDeclarationNode>,
+								RequiredOrNode<
+									RequiredNode<EntryPointDeclarationNode>,
+									RequiredNode<EndlessGenericStatementNode>
+								>
+							>
+						>
+					>
+				>
+			>
+		>
+	>
 	{
 
 		public RootNode() : base(NodeType.RootNode, -1, -1) { }

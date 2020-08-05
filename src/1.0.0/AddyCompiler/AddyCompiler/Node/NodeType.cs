@@ -74,13 +74,18 @@ namespace AddyCompiler.Node
         // Neccessities & Generics
         RootNode,
         FileScopeStatementNode,
-        StatementNode,
+        CodeBodyNode,
+        IdentifierListNode,
+        EndlessGenericStatementNode,
+        GenericStatementNode,
         // Compilers & Comments
         CompilerDeclarationNode,
-        ImportDeclaration,
+        ImportDeclarationNode,
         // Calls
         FunctionCallNode,
         // Declarations
+        PrivacyDeclarationNode,
+        ScopeDeclarationNode,
         ClassDeclarationNode,
         SwitchDeclarationNode,
         GuideDeclarationNode,
@@ -88,9 +93,13 @@ namespace AddyCompiler.Node
         EntryPointDeclarationNode,
         VariableDeclarationNode,
         // Statements
+        ConditionalStatementNode,
         IfStatementNode,
+        ElseIfStatementNode,
         ElseStatementNode,
+        GateStatementNode,
         // Loops
+        ConditionalLoopNode,
         DoLoopNode,
         ForLoopNode,
         WhileLoopNode

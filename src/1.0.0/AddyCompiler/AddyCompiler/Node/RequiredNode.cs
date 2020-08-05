@@ -39,5 +39,11 @@ namespace AddyCompiler.Node
 				return true;
 			return false;
 		}
+
+		public override bool insertNode(BuildingNode n)
+		{
+			_contents = n;
+			return true;
+		}
 	}
 }
