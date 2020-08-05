@@ -1,0 +1,14 @@
+#! Executable
+import test1.addy;
+import test2.addy as t2;
+import test3.addy as test3;
+
+# Input
+text inp = in("Press enter to run all tests, or enter the number of tests you want to execute: ");
+number test = -1;
+if(text != "") {
+	tests = inp.toNum();
+}
+
+# Test 1
+run(test1);
