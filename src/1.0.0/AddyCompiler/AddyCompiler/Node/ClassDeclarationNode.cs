@@ -8,26 +8,18 @@ using System.Threading.Tasks;
 namespace AddyCompiler.Node
 {
 	public class ClassDeclarationNode : ParserNode<
-		RequiredOrNode<
-			// class ex {_}
+		// 'public' class ex {_}
+		RequiredAndNode<
+			// w/ Privacy
+			RequiredOrNode<
+				RequiredNode<PrivacyDeclarationNode>,
+				NullNode
+			>,
 			RequiredAndNode<
-				// No privacy
 				RequiredNode<ClassKeywordNode>,
 				RequiredAndNode<
 					RequiredNode<IdentifierNode>,
-					RequiredNode<CodeBodyNode>
-				>
-			>,
-			// public class ex {_}
-			RequiredAndNode<
-				// w/ Privacy
-				RequiredNode<PrivacyDeclarationNode>,
-				RequiredAndNode<
-					RequiredNode<ClassKeywordNode>,
-					RequiredAndNode<
-						RequiredNode<IdentifierNode>,
-						RequiredNode<CodeBodyNode>
-					>
+					RequiredNode<ClassInternalsNode>
 				>
 			>
 		>

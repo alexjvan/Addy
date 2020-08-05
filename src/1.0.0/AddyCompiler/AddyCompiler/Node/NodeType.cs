@@ -17,7 +17,10 @@ namespace AddyCompiler.Node
         AsKeywordNode,
         // -- functions
         ClassKeywordNode,
+        GuideKeywordNode,
+        SwitchKeywordNode,
         FunctionKeywordNode,
+        EntryKeywordNode,
         ReturnKeywordNode,
         // -- scope
         GlobalKeywordNode,
@@ -78,20 +81,32 @@ namespace AddyCompiler.Node
         IdentifierListNode,
         EndlessGenericStatementNode,
         GenericStatementNode,
+        ConditionStatement,
         // Compilers & Comments
         CompilerDeclarationNode,
         ImportDeclarationNode,
         // Calls
         FunctionCallNode,
+        ReturnStatementNode,
+        ParamatersNode,
+        ParamatersListNode,
+        ArgumentsNode,
+        ArgumentsListNode,
         // Declarations
         PrivacyDeclarationNode,
         ScopeDeclarationNode,
         ClassDeclarationNode,
+        ClassInternalsNode,
+        ClassRepeatableNode,
         SwitchDeclarationNode,
         GuideDeclarationNode,
         FunctionDeclarationNode,
+        GuideFunctionDeclarationNode,
         EntryPointDeclarationNode,
+        VariableKeywordNode,
+        VariableValueNode,
         VariableDeclarationNode,
+        ArrayVariableDeclarationNode,
         // Statements
         ConditionalStatementNode,
         IfStatementNode,

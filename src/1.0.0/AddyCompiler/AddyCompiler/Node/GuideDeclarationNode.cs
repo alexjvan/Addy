@@ -8,26 +8,17 @@ using System.Threading.Tasks;
 namespace AddyCompiler.Node
 {
 	public class GuideDeclarationNode : ParserNode<
-		RequiredOrNode<
-			// guide ex {_}
+		// 'public' guide ex {_}
+		RequiredAndNode<
+			RequiredOrNode<
+				RequiredNode<PrivacyDeclarationNode>,
+				NullNode
+			>,
 			RequiredAndNode<
-				// No privacy
-				RequiredNode<ClassKeywordNode>,
+				RequiredNode<GuideKeywordNode>,
 				RequiredAndNode<
 					RequiredNode<IdentifierNode>,
-					RequiredNode<CodeBodyNode>
-				>
-			>,
-			// public guide ex {_}
-			RequiredAndNode<
-				// w/ Privacy
-				RequiredNode<PrivacyDeclarationNode>,
-				RequiredAndNode<
-					RequiredNode<ClassKeywordNode>,
-					RequiredAndNode<
-						RequiredNode<IdentifierNode>,
-						RequiredNode<CodeBodyNode>
-					>
+					RequiredNode<ClassInternalsNode>
 				>
 			>
 		>

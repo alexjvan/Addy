@@ -92,6 +92,10 @@ namespace AddyCompiler.Lexer
 						break;
 
 					// operators
+					case '=':
+						checkBuild(nodes, building, row, col);
+						nodes.Add(new EqualsNode(row, col));
+						break;
 					case '+':
 						checkBuild(nodes, building, row, col);
 						nodes.Add(new AdditionNode(row, col));
@@ -223,7 +227,7 @@ namespace AddyCompiler.Lexer
 			{
 				// statements
 				case "if":
-					nodes.Add(new IfNode(row, col));
+					nodes.Add(new IfKeywordNode(row, col));
 					break;
 				case "else":
 					nodes.Add(new ElseNode(row, col));
@@ -236,7 +240,7 @@ namespace AddyCompiler.Lexer
 					nodes.Add(new DoNode(row, col));
 					break;
 				case "for":
-					nodes.Add(new ForNode(row, col));
+					nodes.Add(new ForKeywordNode(row, col));
 					break;
 				case "while":
 					nodes.Add(new WhileNode(row, col));
@@ -262,8 +266,17 @@ namespace AddyCompiler.Lexer
 				case "class":
 					nodes.Add(new ClassKeywordNode(row, col));
 					break;
+				case "guide":
+					nodes.Add(new GuideKeywordNode(row, col));
+					break;
+				case "switch":
+					nodes.Add(new SwitchKeywordNode(row, col));
+					break;
 				case "fun":
 					nodes.Add(new FunctionKeywordNode(row, col));
+					break;
+				case "entry":
+					nodes.Add(new EntryKeywordNode(row, col));
 					break;
 				case "return":
 					nodes.Add(new ReturnKeywordNode(row, col));

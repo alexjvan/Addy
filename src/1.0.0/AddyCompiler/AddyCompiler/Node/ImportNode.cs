@@ -8,22 +8,15 @@ using System.Threading.Tasks;
 namespace AddyCompiler.Node
 {
 	public class ImportNode : ParserNode<
-		RequiredOrNode<
-			// import "ex";
+		// import "ex" 'as ex';
+		RequiredAndNode<
+			RequiredNode<ImportKeywordNode>,
 			RequiredAndNode<
-				RequiredNode<ImportKeywordNode>,
-				RequiredAndNode<
-					RequiredNode<TextNode>,
-					RequiredNode<SemiColonNode>
-				>
-			>,
-			// import "ex" as ex;
-			RequiredAndNode<
-				RequiredNode<ImportKeywordNode>,
-				RequiredAndNode<
-					RequiredNode<TextNode>,
+				RequiredNode<TextNode>,
+				RequiredOrNode<
+					NullNode,
 					RequiredAndNode<
-						RequiredNode<AsKeywordNode>, 
+						RequiredNode<AsKeywordNode>,
 						RequiredAndNode<
 							RequiredNode<IdentifierNode>,
 							RequiredNode<SemiColonNode>
@@ -34,7 +27,7 @@ namespace AddyCompiler.Node
 		>
 	>
 	{
-		public ImportNode(int rowStart, int colStart) : base(NodeType.ImportDeclaration, rowStart, colStart) { }
-		public ImportNode(int rowStart, int rowSpan, int colStart, int colSpan) : base(NodeType.ImportDeclaration, rowStart, rowSpan, colStart, colSpan) { }
+		public ImportNode(int rowStart, int colStart) : base(NodeType.ImportDeclarationNode, rowStart, colStart) { }
+		public ImportNode(int rowStart, int rowSpan, int colStart, int colSpan) : base(NodeType.ImportDeclarationNode, rowStart, rowSpan, colStart, colSpan) { }
 	}
 }

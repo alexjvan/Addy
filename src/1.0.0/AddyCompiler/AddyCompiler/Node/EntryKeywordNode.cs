@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace AddyCompiler.Node
 {
-	public class IfNode : StatementNode
+	public class EntryKeywordNode : KeywordNode
 	{
-		public IfNode(int row, int col) : base(NodeType.IfKeywordNode, "if", row, col) { }
+
+		public EntryKeywordNode(int row, int col) : base(NodeType.EntryKeywordNode, "entry", row, col) { }
 	}
 }

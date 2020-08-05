@@ -64,6 +64,7 @@ namespace AddyCompiler.Node.Generics
 
 		public override bool insertNode(BuildingNode n)
 		{
+			// TODO -- redo
 			bool suc = false;
 			if (_one.GetType() == typeof(RequiredAndNode) || _one.GetType() == typeof(RequiredOrNode) || _one.GetType() == typeof(RequiredNode))
 			{

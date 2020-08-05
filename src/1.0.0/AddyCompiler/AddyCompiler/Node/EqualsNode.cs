@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace AddyCompiler.Node
 {
-	public class ForNode : LoopNode
+	public class EqualsNode : PunctuationNode
 	{
-		public ForNode(int row, int col) : base(NodeType.ForKeywordNode, "for", row, col) { }
+		public EqualsNode(int row, int col) : base(NodeType.EqualsToken, '=', row, col) { }
 	}
 }

@@ -15,8 +15,11 @@ namespace AddyCompiler.Node
 				RequiredOrNode<
 					RequiredNode<VariableDeclarationNode>,
 					RequiredOrNode<
-						RequiredNode<FunctionalCallNode>,
-						RequiredNode<ReturnStatementNode>
+						RequiredNode<VariableManipulationNode>,
+						RequiredOrNode<
+							RequiredNode<FunctionCallNode>,
+							RequiredNode<ReturnStatementNode>
+						>
 					>
 				>
 			>
