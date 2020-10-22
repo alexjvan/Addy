@@ -96,6 +96,14 @@ namespace AddyCompiler.Lexer
 						checkBuild(nodes, building, row, col);
 						nodes.Add(new EqualsNode(row, col));
 						break;
+					case '<':
+						checkBuild(nodes, building, row, col);
+						nodes.Add(new LessThanNode(row, col));
+						break;
+					case '>':
+						checkBuild(nodes, building, row, col);
+						nodes.Add(new GreaterThanNode(row, col));
+						break;
 					case '+':
 						checkBuild(nodes, building, row, col);
 						nodes.Add(new AdditionNode(row, col));
@@ -235,6 +243,9 @@ namespace AddyCompiler.Lexer
 				case "gate":
 					nodes.Add(new GateKeywordNode(row, col));
 					break;
+				case "flow":
+					nodes.Add(new FlowKeywordNode(row, col));
+					break;
 				// loops
 				case "do":
 					nodes.Add(new DoNode(row, col));
@@ -277,6 +288,12 @@ namespace AddyCompiler.Lexer
 					break;
 				case "entry":
 					nodes.Add(new EntryKeywordNode(row, col));
+					break;
+				case "break":
+					nodes.Add(new BreakKeywordNode(row, col));
+					break;
+				case "continue":
+					nodes.Add(new ContinueKeywordNode(row, col));
 					break;
 				case "return":
 					nodes.Add(new ReturnKeywordNode(row, col));

@@ -21,6 +21,8 @@ namespace AddyCompiler.Node
         SwitchKeywordNode,
         FunctionKeywordNode,
         EntryKeywordNode,
+        BreakKeywordNode,
+        ContinueKeywordNode,
         ReturnKeywordNode,
         // -- scope
         GlobalKeywordNode,
@@ -33,6 +35,7 @@ namespace AddyCompiler.Node
         IfKeywordNode,
         ElseKeywordNode,
 		GateKeywordNode,
+        FlowKeywordNode,
         // -- loops
         DoKeywordNode,
         ForKeywordNode,
@@ -81,7 +84,9 @@ namespace AddyCompiler.Node
         IdentifierListNode,
         EndlessGenericStatementNode,
         GenericStatementNode,
-        ConditionStatement,
+        ConditionNode,
+        IfNode,
+        GateFlowNode,
         // Compilers & Comments
         CompilerDeclarationNode,
         ImportDeclarationNode,
@@ -107,6 +112,9 @@ namespace AddyCompiler.Node
         VariableValueNode,
         VariableDeclarationNode,
         ArrayVariableDeclarationNode,
+        // Manipulations
+        VariableManipulationNode,
+        ManipulatingEqualsNode,
         // Statements
         ConditionalStatementNode,
         IfStatementNode,
