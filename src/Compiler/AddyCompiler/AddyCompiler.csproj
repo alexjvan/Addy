@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CD523E5D-8554-4002-89DA-18F51414D96D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AddyCompiler</RootNamespace>
+    <AssemblyName>AddyCompiler</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Addy.cs" />
+    <Compile Include="CompileOutput.cs" />
+    <Compile Include="Converter\Chloe.cs" />
+    <Compile Include="Executor\Emma.cs" />
+    <Compile Include="Lexer\Lillianne.cs" />
+    <Compile Include="Node\Generics\LexerNodes\ValueNode.cs" />
+    <Compile Include="Node\Generics\ParserNodes\ParserNode.cs" />
+    <Compile Include="Node\Generics\ParserNodes\RequiredAndNode.cs" />
+    <Compile Include="Node\Generics\ParserNodes\RequiredNode.cs" />
+    <Compile Include="Node\Generics\ParserNodes\RequiredOrNode.cs" />
+    <Compile Include="Node\LexerNodes\AdditionNode.cs" />
+    <Compile Include="Node\LexerNodes\AsKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\BreakKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\BuildingNode.cs" />
+    <Compile Include="Node\LexerNodes\ClassKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\CloseBraceNode.cs" />
+    <Compile Include="Node\LexerNodes\CloseBracketNode.cs" />
+    <Compile Include="Node\LexerNodes\CloseParenthesisNode.cs" />
+    <Compile Include="Node\LexerNodes\ColonNode.cs" />
+    <Compile Include="Node\LexerNodes\CommaNode.cs" />
+    <Compile Include="Node\LexerNodes\CompilerDeclarationNode.cs" />
+    <Compile Include="Node\LexerNodes\ContinueKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\DivisionNode.cs" />
+    <Compile Include="Node\LexerNodes\DoNode.cs" />
+    <Compile Include="Node\LexerNodes\ElseNode.cs" />
+    <Compile Include="Node\LexerNodes\EncasementCloseNode.cs" />
+    <Compile Include="Node\LexerNodes\EncasementOpenNode.cs" />
+    <Compile Include="Node\LexerNodes\EntryKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\EqualsNode.cs" />
+    <Compile Include="Node\LexerNodes\ExclamationNode.cs" />
+    <Compile Include="Node\LexerNodes\FlowKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\ForKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\FriendlyKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\FunctionKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\GateKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\GlobalKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\GreaterThanNode.cs" />
+    <Compile Include="Node\LexerNodes\GuideKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\IdentifierNode.cs" />
+    <Compile Include="Node\LexerNodes\IfKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\ImportKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\KeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\LessThanNode.cs" />
+    <Compile Include="Node\LexerNodes\LocalKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\LogicKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\LogicNode.cs" />
+    <Compile Include="Node\LexerNodes\LoopNode.cs" />
+    <Compile Include="Node\LexerNodes\MultiLineLocNode.cs" />
+    <Compile Include="Node\LexerNodes\MultiplicationNode.cs" />
+    <Compile Include="Node\LexerNodes\NumKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\NumNode.cs" />
+    <Compile Include="Node\LexerNodes\OpenBraceNode.cs" />
+    <Compile Include="Node\LexerNodes\OpenBracketNode.cs" />
+    <Compile Include="Node\LexerNodes\OpenParenthesisNode.cs" />
+    <Compile Include="Node\LexerNodes\OperatorNode.cs" />
+    <Compile Include="Node\LexerNodes\PeriodNode.cs" />
+    <Compile Include="Node\LexerNodes\PrivateKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\PublicKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\PunctuationNode.cs" />
+    <Compile Include="Node\LexerNodes\QuestionNode.cs" />
+    <Compile Include="Node\LexerNodes\ReturnKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\SemiColonNode.cs" />
+    <Compile Include="Node\LexerNodes\SingleLocNode.cs" />
+    <Compile Include="Node\LexerNodes\StatementNode.cs" />
+    <Compile Include="Node\LexerNodes\SubtractionNode.cs" />
+    <Compile Include="Node\LexerNodes\SwitchKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\TextKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\TextNode.cs" />
+    <Compile Include="Node\LexerNodes\ValueNode.cs" />
+    <Compile Include="Node\LexerNodes\VariableKeywordNode.cs" />
+    <Compile Include="Node\LexerNodes\WhileNode.cs" />
+    <Compile Include="Node\NodeType.cs" />
+    <Compile Include="Node\ParserNodes\ArgumentsListNode.cs" />
+    <Compile Include="Node\ParserNodes\ArgumentsNode.cs" />
+    <Compile Include="Node\ParserNodes\ClassDeclarationNode.cs" />
+    <Compile Include="Node\ParserNodes\ClassInternalsNode.cs" />
+    <Compile Include="Node\ParserNodes\ClassRepeatableNode.cs" />
+    <Compile Include="Node\ParserNodes\CodeBodyNode.cs" />
+    <Compile Include="Node\ParserNodes\ConditionalLoopNode.cs" />
+    <Compile Include="Node\ParserNodes\ConditionalStatementNode.cs" />
+    <Compile Include="Node\ParserNodes\ConditionNode.cs" />
+    <Compile Include="Node\ParserNodes\EndlessGenericStatementNode.cs" />
+    <Compile Include="Node\ParserNodes\EntryPointDeclarationNode.cs" />
+    <Compile Include="Node\ParserNodes\FunctionCallNode.cs" />
+    <Compile Include="Node\ParserNodes\FunctionDeclarationNode.cs" />
+    <Compile Include="Node\ParserNodes\GateFlowNode.cs" />
+    <Compile Include="Node\ParserNodes\GenericStatementNode.cs" />
+    <Compile Include="Node\ParserNodes\GuideDeclarationNode.cs" />
+    <Compile Include="Node\ParserNodes\GuideFunDeclarationNode.cs" />
+    <Compile Include="Node\ParserNodes\IdentifierListNode.cs" />
+    <Compile Include="Node\ParserNodes\IfNode.cs" />
+    <Compile Include="Node\ParserNodes\ImportNode.cs" />
+    <Compile Include="Node\ParserNodes\ManipulatingEqualsNode.cs" />
+    <Compile Include="Node\ParserNodes\NullNode.cs" />
+    <Compile Include="Node\ParserNodes\ParamatersListNode.cs" />
+    <Compile Include="Node\ParserNodes\ParamatersNode.cs" />
+    <Compile Include="Node\ParserNodes\ParserNode.cs" />
+    <Compile Include="Node\ParserNodes\PrivacyDeclarationNode.cs" />
+    <Compile Include="Node\ParserNodes\ReqNode.cs" />
+    <Compile Include="Node\ParserNodes\RequiredAndNode.cs" />
+    <Compile Include="Node\ParserNodes\RequiredNode.cs" />
+    <Compile Include="Node\ParserNodes\RequiredOrNode.cs" />
+    <Compile Include="Node\ParserNodes\ReturnStatementNode.cs" />
+    <Compile Include="Node\ParserNodes\RootNode.cs" />
+    <Compile Include="Node\ParserNodes\ScopeDeclarationNode.cs" />
+    <Compile Include="Node\ParserNodes\SwitchDeclarationNode.cs" />
+    <Compile Include="Node\ParserNodes\VariableDeclarationNode.cs" />
+    <Compile Include="Node\ParserNodes\VariableManipulationNode.cs" />
+    <Compile Include="Node\ParserNodes\VariableValueNode.cs" />
+    <Compile Include="Optimizer\Olivia.cs" />
+    <Compile Include="Parser\Errors\ErrorType.cs" />
+    <Compile Include="Parser\Errors\ParseError.cs" />
+    <Compile Include="Parser\Pal.cs" />
+    <Compile Include="Recognizer\Rachel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
