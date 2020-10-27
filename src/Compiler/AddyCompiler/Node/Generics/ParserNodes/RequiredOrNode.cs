@@ -62,7 +62,7 @@ namespace AddyCompiler.Node.Generics
 			_two = two;
 		}
 
-		public override bool insertNode(BuildingNode n)
+		public override bool insertNode(LexerNode n)
 		{
 			// TODO -- redo
 			bool suc = false;

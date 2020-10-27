@@ -54,7 +54,7 @@
     <Compile Include="Node\LexerNodes\AdditionNode.cs" />
     <Compile Include="Node\LexerNodes\AsKeywordNode.cs" />
     <Compile Include="Node\LexerNodes\BreakKeywordNode.cs" />
-    <Compile Include="Node\LexerNodes\BuildingNode.cs" />
+    <Compile Include="Node\LexerNodes\LexerNode.cs" />
     <Compile Include="Node\LexerNodes\ClassKeywordNode.cs" />
     <Compile Include="Node\LexerNodes\CloseBraceNode.cs" />
     <Compile Include="Node\LexerNodes\CloseBracketNode.cs" />
@@ -88,7 +88,7 @@
     <Compile Include="Node\LexerNodes\LogicKeywordNode.cs" />
     <Compile Include="Node\LexerNodes\LogicNode.cs" />
     <Compile Include="Node\LexerNodes\LoopNode.cs" />
-    <Compile Include="Node\LexerNodes\MultiLineLocNode.cs" />
+    <Compile Include="Node\ParserNodes\MultiLineLocNode.cs" />
     <Compile Include="Node\LexerNodes\MultiplicationNode.cs" />
     <Compile Include="Node\LexerNodes\NumKeywordNode.cs" />
     <Compile Include="Node\LexerNodes\NumNode.cs" />
@@ -103,13 +103,11 @@
     <Compile Include="Node\LexerNodes\QuestionNode.cs" />
     <Compile Include="Node\LexerNodes\ReturnKeywordNode.cs" />
     <Compile Include="Node\LexerNodes\SemiColonNode.cs" />
-    <Compile Include="Node\LexerNodes\SingleLocNode.cs" />
     <Compile Include="Node\LexerNodes\StatementNode.cs" />
     <Compile Include="Node\LexerNodes\SubtractionNode.cs" />
     <Compile Include="Node\LexerNodes\SwitchKeywordNode.cs" />
     <Compile Include="Node\LexerNodes\TextKeywordNode.cs" />
     <Compile Include="Node\LexerNodes\TextNode.cs" />
-    <Compile Include="Node\LexerNodes\ValueNode.cs" />
     <Compile Include="Node\LexerNodes\VariableKeywordNode.cs" />
     <Compile Include="Node\LexerNodes\WhileNode.cs" />
     <Compile Include="Node\NodeType.cs" />

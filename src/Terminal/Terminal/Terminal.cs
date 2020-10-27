@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AddyCompiler;
+using AddyCompiler.Node;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -106,12 +108,108 @@ namespace Terminal
 				}
 				else if(inp.startsWith("run"))
 				{
+					if (inp.args.Length == 1)
+					{
+						// run information
+					}
+					else if(inp.args.Length == 2)
+					{
+						// run
+						if(File.Exists(printDir() + inp.args[1]))
+						{
+							if(inp.args[1].EndsWith(".addy"))
+							{
+								string contents = readLines(inp.args[1]);
+								CompileOutput output = Addy.Compile(contents);
+								if(settings.outputLex)
+								{
+									printLex(output.lexerOutput, output.times[0]);
+								}
+							}
+							else
+							{
+								// Not a valid file extension
+								continue;
+							}
+						}
+						else
+						{
+							// Not a valid file
+							continue;
+						}
+					}
+					else
+					{
 
+					}
 				}
 				else if(inp.startsWith("compile"))
 				{
+					if(inp.args.Length == 1)
+					{
+						// compile
+					}
+					else if (inp.args.Length == 2)
+					{
+						// compile
+					}
+					else
+					{
 
+					}
 				}
+			}
+		}
+
+		static string readLines(string file)
+		{
+			string[] lines = File.ReadAllLines(printDir() + file);
+			string asString = "";
+			foreach (string line in lines)
+				asString += line + "\n";
+			return asString;
+		}
+
+		static void printLex(LexerNode[] nodes, TimeSpan lexTime)
+		{
+			string timeToPrint = ((int)lexTime.TotalSeconds > 0) ? lexTime.TotalSeconds+"" : lexTime.TotalMilliseconds+"m";
+			Console.WriteLine("----------------------------------------------------------------------------------------------------");
+			Console.WriteLine($"Lexer Output\t\t\tTook: {timeToPrint}s");
+			Console.WriteLine("----------------------------------------------------------------------------------------------------");
+			Console.WriteLine("NodeType\t\t\tRow\tCol\tString Value");
+			Console.WriteLine("----------------------------------------------------------------------------------------------------");
+			int typeLength = 32;
+			int rowLength = 8;
+			int colLength = 8;
+			int rawLength = 70;
+			foreach (LexerNode node in nodes)
+			{
+				string typeString = node.Type.ToString();
+				Console.Write(typeString);
+				for (int left = typeLength - typeString.Length; left > 0; left--)
+					Console.Write(" ");
+				Console.Write(node.Row);
+				for (int left = rowLength - node.Row.ToString().Length; left > 0; left--)
+					Console.Write(" ");
+				Console.Write(node.Col);
+				for (int left = colLength - node.Col.ToString().Length; left > 0; left--)
+					Console.Write(" ");
+				string printedRaw = node.RawVal;
+				if(printedRaw.Length > rawLength)
+				{
+					while (printedRaw.Length > rawLength)
+					{
+						Console.Write(printedRaw.Substring(0, rawLength));
+						printedRaw = printedRaw.Substring(rawLength);
+						Console.WriteLine();
+						for (int left = typeLength+rowLength+colLength - 1; left > 0; left--)
+							Console.Write(" ");
+					}
+					Console.Write(printedRaw);
+				}
+				else
+					Console.Write(node.RawVal);
+				Console.WriteLine();
 			}
 		}
 

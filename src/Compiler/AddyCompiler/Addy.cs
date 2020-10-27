@@ -12,6 +12,7 @@ using AddyCompiler.Parser.Errors;
 using AddyCompiler.Optimizer;
 using AddyCompiler.Converter;
 using AddyCompiler.Executor;
+using System.Diagnostics;
 
 namespace AddyCompiler
 {
@@ -22,32 +23,35 @@ namespace AddyCompiler
             CompileOutput co = new CompileOutput();
             co.input = input;
             co.outputFile = outfile;
-            co.times[0] = DateTime.UtcNow;
+            Stopwatch stopWatch = Stopwatch.StartNew();
             // ----- FRONT END -----
             // LEX
             //      Convert string input into basic tokens
             //      Nothing more than variables to hold the absolute basics
-            BuildingNode[] nodes = Lillianne.Lex(input);
+            LexerNode[] nodes = Lillianne.Lex(input);
             co.lexerOutput = nodes;
-            co.times[1] = DateTime.UtcNow;
+            co.times[0] = stopWatch.Elapsed;
+            stopWatch.Restart();
 
 			// PARSE
             //      Convert tokens into nodes
             //      Build AST
 			RootNode root = Pal.Parse(nodes);
             co.parserOutput = root;
-            co.times[2] = DateTime.UtcNow;
+            co.times[1] = stopWatch.Elapsed;
+            stopWatch.Restart();
 
             // RECOGNIZE
             //      Make sure everything has everything that it needs to have (all reqands and reqors are good)
             ParseError[] errorsFound = Rachel.Check(root);
             co.recognizerOutput = errorsFound;
-            co.times[3] = DateTime.UtcNow;
+            co.times[2] = stopWatch.Elapsed;
+            stopWatch.Restart();
 
             // STOP
             //      If there are errors in the program - return with those errors
             //      No need to continue and optimize, compile/execute incorrect code
-            if(errorsFound.Length != 0)
+            if (errorsFound.Length != 0)
                 return co;
 
             // ----- BACK END -----
@@ -56,17 +60,18 @@ namespace AddyCompiler
             //		remove duplicate calculations where possible
             RootNode optimized = Olivia.Optimize(root);
             co.optimizerOutput = optimized;
-            co.times[4] = DateTime.UtcNow;
+            co.times[3] = stopWatch.Elapsed;
+            stopWatch.Restart();
 
-            
-            if(outfile == null)
+            if (outfile == null)
 			{
                 // EXECUTE
                 //      In shell, execute the given code to give the output
                 string[] output = Emma.Execute(optimized);
                 co.executed = true;
                 co.executorOutput = output;
-                co.times[5] = DateTime.UtcNow;
+                co.times[4] = stopWatch.Elapsed;
+                stopWatch.Restart();
             } 
             else
 			{
@@ -77,7 +82,8 @@ namespace AddyCompiler
                 //		.o file to be processed [linked] (gcc -lc) into executable (.exe file)
                 bool successful = Chloe.Convert(optimized, outfile);
                 co.compiled = true;
-                co.times[5] = DateTime.UtcNow;
+                co.times[4] = stopWatch.Elapsed;
+                stopWatch.Restart();
             }
 
             return co;

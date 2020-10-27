@@ -47,7 +47,7 @@ namespace AddyCompiler.Node
 			_two = new RequiredNode();
 		}
 
-		public RequiredOrNode(BuildingNode one, BuildingNode two = null)
+		public RequiredOrNode(LexerNode one, LexerNode two = null)
 		{
 			_one = new RequiredNode(one);
 			_two = new RequiredNode(two);

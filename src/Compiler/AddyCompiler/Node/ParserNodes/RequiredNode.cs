@@ -9,9 +9,9 @@ namespace AddyCompiler.Node
 	public class RequiredNode : ReqNode
 	{
 
-		internal BuildingNode _contents;
+		internal LexerNode _contents;
 
-		public BuildingNode Contents
+		public LexerNode Contents
 		{
 			get
 			{
@@ -28,7 +28,7 @@ namespace AddyCompiler.Node
 			_contents = null;
 		}
 
-		public RequiredNode(BuildingNode contents)
+		public RequiredNode(LexerNode contents)
 		{
 			_contents = contents;
 		}
@@ -40,7 +40,7 @@ namespace AddyCompiler.Node
 			return false;
 		}
 
-		public override bool insertNode(BuildingNode n)
+		public override bool insertNode(LexerNode n)
 		{
 			_contents = n;
 			return true;

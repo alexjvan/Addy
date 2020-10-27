@@ -13,7 +13,7 @@ namespace AddyCompiler.Node
 			return true;
 		}
 
-		public override bool insertNode(BuildingNode n)
+		public override bool insertNode(LexerNode n)
 		{
 			return false;
 		}

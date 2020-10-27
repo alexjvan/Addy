@@ -8,10 +8,10 @@ namespace AddyCompiler.Node
 {
 	public abstract class OperatorNode : PunctuationNode
 	{
-		private ValueNode _left;
-		private ValueNode _right;
+		private LexerNode _left;
+		private LexerNode _right;
 
-		public ValueNode LeftNode
+		public LexerNode LeftNode
 		{
 			get
 			{
@@ -23,7 +23,7 @@ namespace AddyCompiler.Node
 			}
 		}
 
-		public ValueNode RightNode
+		public LexerNode RightNode
 		{
 			get
 			{

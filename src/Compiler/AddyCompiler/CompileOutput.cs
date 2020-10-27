@@ -14,9 +14,9 @@ namespace AddyCompiler
 		public string outputFile = null;
 		public bool executed = false;
 		public bool compiled = false;
-		public DateTime[] times = new DateTime[6];
+		public TimeSpan[] times = new TimeSpan[5];
 
-		public BuildingNode[] lexerOutput;
+		public LexerNode[] lexerOutput;
 		public RootNode parserOutput;
 		public ParseError[] recognizerOutput;
 		public RootNode optimizerOutput;

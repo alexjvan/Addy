@@ -17,5 +17,10 @@ namespace AddyCompiler.Parser.Errors
 				return _type;
 			}
 		}
+
+		public ParseError(ErrorType type)
+		{
+			_type = type;
+		}
 	}
 }

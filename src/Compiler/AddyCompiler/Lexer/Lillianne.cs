@@ -9,14 +9,14 @@ namespace AddyCompiler.Lexer
 {
     public class Lillianne
     {
-        public static BuildingNode[] Lex(string input)
+		private static string building = "";
+
+        public static LexerNode[] Lex(string input)
         {
-            List<BuildingNode> nodes = new List<BuildingNode>();
+            List<LexerNode> nodes = new List<LexerNode>();
 
             int row = 1;
             int col = 1;
-
-            string building = "";
 
             for(int i = 0; i < input.Length; i++)
             {
@@ -26,17 +26,17 @@ namespace AddyCompiler.Lexer
                 {
                     // literals
                     case '\n':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						row++;
                         col = 0;
                         break;
                     case '\t':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						// only increase col by three because the next will increase it by one more
 						col += 3;
                         break;
 					case '#':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						// multiline comment
 						if (input[i + 1] == '-')
 						{
@@ -93,93 +93,93 @@ namespace AddyCompiler.Lexer
 
 					// operators
 					case '=':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new EqualsNode(row, col));
 						break;
 					case '<':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new LessThanNode(row, col));
 						break;
 					case '>':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new GreaterThanNode(row, col));
 						break;
 					case '+':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new AdditionNode(row, col));
 						break;
 					case '-':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new SubtractionNode(row, col));
 						break;
 					case '*':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new MultiplicationNode(row, col));
 						break;
 					case '/':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new DivisionNode(row, col));
 						break;
 					// punctuation
 					case '.':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new PeriodNode(row, col));
 						break;
 					case ',':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new CommaNode(row, col));
 						break;
 					case ':':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new ColonNode(row, col));
 						break;
 					case ';':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new SemiColonNode(row, col));
 						break;
 					case '?':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new QuestionNode(row, col));
 						break;
 					case '!':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new ExclamationNode(row, col));
 						break;
 					case '(':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new OpenParenthesisNode(row, col));
 						break;
 					case ')':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new CloseParenthesisNode(row, col));
 						break;
 					case '[':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new OpenBraceNode(row, col));
 						break;
 					case ']':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new CloseBraceNode(row, col));
 						break;
 					case '{':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new OpenBracketNode(row, col));
 						break;
 					case '}':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						nodes.Add(new CloseBracketNode(row, col));
 						break;
 					// string (for text)
 					case '"':
 					case '\'':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
 						char quoteType = cur;
 						string text = "";
 						for(int x = i + 1; x < input.Length; x++)
 						{
 							if (input[x] == quoteType)
 							{
-								if(text[text.Length - 1] == '\\')
+								if(text.Length > 0 && text[text.Length - 1] == '\\')
 								{
 									text = text.Substring(0, text.Length - 1);
 									text += quoteType;
@@ -187,8 +187,9 @@ namespace AddyCompiler.Lexer
 								else
 								{
 									nodes.Add(new TextNode(quoteType, text, row, col));
-									i += x + 1;
-									col += x + 1;
+									i = x;
+									// increase column by 2 for quotes - second increase happens at end of for loop
+									col = x + 1;
 									break;
 								}
 							}
@@ -198,7 +199,7 @@ namespace AddyCompiler.Lexer
 						break;
 
                     case ' ':
-						checkBuild(nodes, building, row, col);
+						checkBuild(nodes, row, col);
                         break;
 
                     default:
@@ -212,7 +213,7 @@ namespace AddyCompiler.Lexer
             return nodes.ToArray();
         }
 
-		private static void checkBuild(List<BuildingNode> nodes, string building, int row, int col)
+		private static void checkBuild(List<LexerNode> nodes, int row, int col)
 		{
 			if (building == "")
 				return;
@@ -222,14 +223,14 @@ namespace AddyCompiler.Lexer
 				nodes.Add(new NumNode(maybe, row, actcol));
 			else
 			{
-				checkKeyword(nodes, building, row, actcol);
+				checkKeyword(nodes, row, actcol);
 				if(building != "")
 					nodes.Add(new IdentifierNode(building, row, actcol));
 			}
 			building = "";
 		}
 
-		private static void checkKeyword(List<BuildingNode> nodes, string building, int row, int col)
+		private static void checkKeyword(List<LexerNode> nodes, int row, int col)
 		{
 			switch(building)
 			{

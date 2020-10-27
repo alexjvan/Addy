@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AddyCompiler.Node.Generics
 {
-	public abstract class ValueNode<T> : ValueNode
+	public abstract class ValueNode<T> : LexerNode
 	{
 		private T _val;
 
@@ -21,6 +21,7 @@ namespace AddyCompiler.Node.Generics
 		public ValueNode(NodeType type, T value, int row, int col) : base(type, row, col)
 		{
 			_val = value;
+			_stringVal = value.ToString();
 		}
 	}
 }

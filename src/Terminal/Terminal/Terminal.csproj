@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="AddyCompiler">
+      <HintPath>..\..\Compiler\AddyCompiler\bin\Debug\AddyCompiler.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="settings.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

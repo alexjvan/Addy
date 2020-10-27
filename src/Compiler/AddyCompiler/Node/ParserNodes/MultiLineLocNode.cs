@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AddyCompiler.Node
 {
-	public class MultiLineLocNode : SingleLocNode
+	public class MultiLineLocNode : LexerNode
 	{
 		private int _colSpan;
 		private int _rowSpan;
