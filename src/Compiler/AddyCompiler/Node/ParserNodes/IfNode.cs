@@ -9,40 +9,47 @@ namespace AddyCompiler.Node
 {
 	public class IfNode : ParserNode<
 		// if (condition) {...} 'else 'if (condition)' {...}
+		// if (condition) statement 'else if()...'
 		RequiredAndNode<
-			RequiredAndNode<
+			RequiredOrNode<
 				RequiredAndNode<
 					RequiredAndNode<
-						RequiredNode<IfKeywordNode>,
-						RequiredNode<OpenParenthesisNode>
+						RequiredAndNode<
+							RequiredNode<IfKeywordNode>,
+							RequiredNode<OpenParenthesisNode>
+						>,
+						RequiredAndNode<
+							RequiredNode<ConditionNode>,
+							RequiredNode<CloseParenthesisNode>
+						>
 					>,
 					RequiredAndNode<
-						RequiredNode<ConditionNode>,
-						RequiredNode<CloseParenthesisNode>
+						RequiredAndNode<
+							RequiredNode<OpenBracketNode>,
+							RequiredNode<EndlessGenericStatementNode>
+						>,
+						RequiredNode<CloseBracketNode>
 					>
 				>,
 				RequiredAndNode<
 					RequiredAndNode<
-						RequiredNode<OpenBracketNode>,
-						RequiredNode<EndlessGenericStatementNode>
+						RequiredAndNode<
+							RequiredNode<IfKeywordNode>,
+							RequiredNode<OpenParenthesisNode>
+						>,
+						RequiredNode<ConditionNode>
 					>,
-					RequiredNode<CloseBracketNode>
+					RequiredAndNode<
+						RequiredNode<CloseParenthesisNode>,
+						RequiredNode<GenericStatementNode>
+					>
 				>
 			>,
 			RequiredOrNode<
 				NullNode,
 				RequiredAndNode<
 					RequiredNode<ElseNode>,
-					RequiredOrNode<
-						RequiredNode<IfNode>,
-						RequiredAndNode<
-							RequiredAndNode<
-								RequiredNode<OpenBracketNode>,
-								RequiredNode<EndlessGenericStatementNode>
-							>,
-							RequiredNode<CloseBracketNode>
-						>
-					>
+					RequiredNode<IfNode>
 				>
 			>
 		>

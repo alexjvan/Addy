@@ -65,6 +65,5 @@ namespace AddyCompiler.Node
 				return true;
 			return false;
 		}
-
 	}
 }

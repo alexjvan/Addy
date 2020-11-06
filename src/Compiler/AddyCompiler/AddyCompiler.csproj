@@ -61,7 +61,6 @@
     <Compile Include="Node\LexerNodes\CloseParenthesisNode.cs" />
     <Compile Include="Node\LexerNodes\ColonNode.cs" />
     <Compile Include="Node\LexerNodes\CommaNode.cs" />
-    <Compile Include="Node\LexerNodes\CompilerDeclarationNode.cs" />
     <Compile Include="Node\LexerNodes\ContinueKeywordNode.cs" />
     <Compile Include="Node\LexerNodes\DivisionNode.cs" />
     <Compile Include="Node\LexerNodes\DoNode.cs" />
@@ -88,7 +87,9 @@
     <Compile Include="Node\LexerNodes\LogicKeywordNode.cs" />
     <Compile Include="Node\LexerNodes\LogicNode.cs" />
     <Compile Include="Node\LexerNodes\LoopNode.cs" />
-    <Compile Include="Node\ParserNodes\MultiLineLocNode.cs" />
+    <Compile Include="Node\ParserNodes\DataStructureDeclarationNode.cs" />
+    <Compile Include="Node\ParserNodes\FunctionDeclarationListNode.cs" />
+    <Compile Include="Node\ParserNodes\ImportBlockNode.cs" />
     <Compile Include="Node\LexerNodes\MultiplicationNode.cs" />
     <Compile Include="Node\LexerNodes\NumKeywordNode.cs" />
     <Compile Include="Node\LexerNodes\NumNode.cs" />
@@ -108,7 +109,8 @@
     <Compile Include="Node\LexerNodes\SwitchKeywordNode.cs" />
     <Compile Include="Node\LexerNodes\TextKeywordNode.cs" />
     <Compile Include="Node\LexerNodes\TextNode.cs" />
-    <Compile Include="Node\LexerNodes\VariableKeywordNode.cs" />
+    <Compile Include="Node\ParserNodes\TopLevelNode.cs" />
+    <Compile Include="Node\ParserNodes\VariableKeywordNode.cs" />
     <Compile Include="Node\LexerNodes\WhileNode.cs" />
     <Compile Include="Node\NodeType.cs" />
     <Compile Include="Node\ParserNodes\ArgumentsListNode.cs" />
@@ -149,7 +151,9 @@
     <Compile Include="Node\ParserNodes\VariableManipulationNode.cs" />
     <Compile Include="Node\ParserNodes\VariableValueNode.cs" />
     <Compile Include="Optimizer\Olivia.cs" />
+    <Compile Include="Parser\Errors\CouldntInsertNodeError.cs" />
     <Compile Include="Parser\Errors\ErrorType.cs" />
+    <Compile Include="Parser\Errors\NotExpectedNodeError.cs" />
     <Compile Include="Parser\Errors\ParseError.cs" />
     <Compile Include="Parser\Pal.cs" />
     <Compile Include="Recognizer\Rachel.cs" />

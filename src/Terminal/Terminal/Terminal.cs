@@ -123,7 +123,7 @@ namespace Terminal
 								CompileOutput output = Addy.Compile(contents);
 								if(settings.outputLex)
 								{
-									printLex(output.lexerOutput, output.times[0]);
+									printLex(output.input.Length, output.lexerOutput, output.times[0]);
 								}
 							}
 							else
@@ -170,14 +170,14 @@ namespace Terminal
 			return asString;
 		}
 
-		static void printLex(LexerNode[] nodes, TimeSpan lexTime)
+		static void printLex(int initialLength, LexerNode[] nodes, TimeSpan lexTime)
 		{
 			string timeToPrint = ((int)lexTime.TotalSeconds > 0) ? lexTime.TotalSeconds+"" : lexTime.TotalMilliseconds+"m";
-			Console.WriteLine("----------------------------------------------------------------------------------------------------");
-			Console.WriteLine($"Lexer Output\t\t\tTook: {timeToPrint}s");
-			Console.WriteLine("----------------------------------------------------------------------------------------------------");
+			Console.WriteLine("-------------------------------------------------------------------------------------------------");
+			Console.WriteLine($"Lexer Output\t\tInput Length: {initialLength}\tCalculated Nodes: {nodes.Length}\tTook: {timeToPrint}s");
+			Console.WriteLine("-------------------------------------------------------------------------------------------------");
 			Console.WriteLine("NodeType\t\t\tRow\tCol\tString Value");
-			Console.WriteLine("----------------------------------------------------------------------------------------------------");
+			Console.WriteLine("-------------------------------------------------------------------------------------------------");
 			int typeLength = 32;
 			int rowLength = 8;
 			int colLength = 8;

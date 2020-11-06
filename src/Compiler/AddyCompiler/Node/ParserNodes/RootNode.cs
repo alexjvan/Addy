@@ -8,27 +8,13 @@ using System.Threading.Tasks;
 namespace AddyCompiler.Node
 {
 	public class RootNode : ParserNode<
+		// Not Required - ImportNode
+		// (class, guide, switch)*
+		// (function)*
+		// (statements)*
 		RequiredOrNode<
-			RequiredNode<CompilerDeclarationNode>,
-			RequiredOrNode<
-				RequiredNode<ImportNode>,
-				RequiredOrNode<
-					RequiredNode<ClassDeclarationNode>,
-					RequiredOrNode<
-						RequiredNode<GuideDeclarationNode>,
-						RequiredOrNode<
-							RequiredNode<SwitchDeclarationNode>,
-							RequiredOrNode<
-								RequiredNode<FunctionDeclarationNode>,
-								RequiredOrNode<
-									RequiredNode<EntryPointDeclarationNode>,
-									RequiredNode<EndlessGenericStatementNode>
-								>
-							>
-						>
-					>
-				>
-			>
+			RequiredNode<ImportNode>,
+			RequiredNode<TopLevelNode>
 		>
 	>
 	{

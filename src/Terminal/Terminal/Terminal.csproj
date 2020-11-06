@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Compiler\AddyCompiler\AddyCompiler.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="AddyCompiler">
       <HintPath>..\..\Compiler\AddyCompiler\bin\Debug\AddyCompiler.dll</HintPath>
     </Reference>

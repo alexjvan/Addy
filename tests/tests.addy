@@ -1,12 +1,11 @@
-#! Executable
-import test1.addy;
+import "test1.addy";
 
 # Input
-text inp = in("Press enter to run all tests, or enter the number of tests you want to execute: ");
+text inp = sys.in("Press enter to run all tests, or enter the number of tests you want to execute: ");
 number test = -1;
-if(text != "") {
+if(inp != "") {
 	tests = inp.toNum();
 }
 
 # Test 1
-run(test1);
+comp.run(test1);

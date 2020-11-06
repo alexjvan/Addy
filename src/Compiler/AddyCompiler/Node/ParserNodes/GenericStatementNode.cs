@@ -8,6 +8,12 @@ using System.Threading.Tasks;
 namespace AddyCompiler.Node
 {
 	public class GenericStatementNode : ParserNode<
+		// if, switch
+		// do, for, while
+		// text t = "";
+		// n++;
+		// wow()
+		// return 12;
 		RequiredOrNode<
 			RequiredNode<ConditionalStatementNode>,
 			RequiredOrNode<

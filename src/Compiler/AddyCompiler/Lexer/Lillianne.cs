@@ -64,21 +64,6 @@ namespace AddyCompiler.Lexer
 									done = true;
 							}
 						}
-						// ONLY NODE THAT WILL BE ABLE TO BE PRE-BUILT GOING INTO PARSER (NO OTHER WAY OF GOING ABOUT IT BUDDY)
-						// compiler declaration
-						else if(input[i + 1] == '!')
-						{
-							string maxi = "";
-							while(cur != '\n')
-							{
-								i++;
-								cur = input[i];
-								if (cur != '\n')
-									maxi += cur;
-							}
-							i--;
-							nodes.Add(new CompilerDeclarationNode(maxi, row, col));
-						}
 						// singleline comment
 						else
 						{

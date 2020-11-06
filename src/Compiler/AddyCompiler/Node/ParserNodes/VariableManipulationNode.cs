@@ -10,16 +10,29 @@ namespace AddyCompiler.Node
 	public class VariableManipulationNode : ParserNode<
 		// ex (+/-/*//)= "example";
 		// ex (+/-/*//)= increment();
+		// ex++(--);
 		RequiredAndNode<
 			RequiredNode<IdentifierNode>,
-			RequiredAndNode<
-				RequiredNode<ManipulatingEqualsNode>,
+			RequiredOrNode<
 				RequiredAndNode<
-					RequiredOrNode<
-						RequiredNode<VariableValueNode>,
-						RequiredNode<FunctionCallNode>
+					RequiredNode<ManipulatingEqualsNode>,
+					RequiredAndNode<
+						RequiredOrNode<
+							RequiredNode<VariableValueNode>,
+							RequiredNode<FunctionCallNode>
+						>,
+						RequiredNode<SemiColonNode>
+					>
+				>,
+				RequiredOrNode<
+					RequiredAndNode<
+						RequiredNode<AdditionNode>,
+						RequiredNode<AdditionNode>
 					>,
-					RequiredNode<SemiColonNode>
+					RequiredAndNode<
+						RequiredNode<SubtractionNode>,
+						RequiredNode<SubtractionNode>
+					>
 				>
 			>
 		>

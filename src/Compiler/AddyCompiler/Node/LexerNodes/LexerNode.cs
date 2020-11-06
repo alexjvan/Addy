@@ -10,6 +10,8 @@ namespace AddyCompiler.Node
 	{
 		private int _col;
 		private int _row;
+		private int _colSpan;
+		private int _rowSpan;
 		private NodeType _type;
 
 		protected string _stringVal = "";
@@ -30,6 +32,30 @@ namespace AddyCompiler.Node
 			}
 		}
 
+		public int ColSpan
+		{
+			get
+			{
+				return _colSpan;
+			}
+			set
+			{
+				_colSpan = value;
+			}
+		}
+
+		public int RowSpan
+		{
+			get
+			{
+				return _rowSpan;
+			}
+			set
+			{
+				_rowSpan = value;
+			}
+		}
+
 		public NodeType Type
         {
             get
@@ -46,11 +72,23 @@ namespace AddyCompiler.Node
 			}
 		}
 
-        public LexerNode(NodeType type, int row, int col)
-        {
+		public int Length
+		{
+			get
+			{
+				return _stringVal.Length;
+			}
+		}
+
+        public LexerNode(NodeType type, int row, int col) : this(type, row, 0, col, 0) { }
+
+		public LexerNode(NodeType type, int row, int rowSpan, int col, int colSpan)
+		{
 			_col = col;
 			_row = row;
-            _type = type;
-        }
+			_colSpan = colSpan;
+			_rowSpan = rowSpan;
+			_type = type;
+		}
     }
 }

@@ -18,7 +18,7 @@ namespace AddyCompiler.Node.Generics
 			}
 		}
 
-		public ValueNode(NodeType type, T value, int row, int col) : base(type, row, col)
+		public ValueNode(NodeType type, T value, int row, int col) : base(type, row, 1, col, value.ToString().Length)
 		{
 			_val = value;
 			_stringVal = value.ToString();

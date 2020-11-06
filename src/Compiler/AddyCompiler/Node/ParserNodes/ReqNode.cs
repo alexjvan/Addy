@@ -8,6 +8,8 @@ namespace AddyCompiler.Node
 {
 	public abstract class ReqNode
 	{
+		public ReqNode() { }
+
 		public abstract bool insertNode(LexerNode n);
 
 		public bool hasRequired()

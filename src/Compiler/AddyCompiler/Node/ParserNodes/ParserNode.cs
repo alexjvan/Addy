@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace AddyCompiler.Node
 {
-	public abstract class ParserNode : MultiLineLocNode
+	public abstract class ParserNode : LexerNode
 	{
-		internal ReqNode _required;
+		protected ReqNode _required;
 
 		public ReqNode Required
 		{

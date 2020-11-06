@@ -8,6 +8,7 @@ namespace AddyCompiler.Parser.Errors
 {
 	public enum ErrorType
 	{
-
+		CouldntInsertNode,
+		NotExpectedNode
 	}
 }

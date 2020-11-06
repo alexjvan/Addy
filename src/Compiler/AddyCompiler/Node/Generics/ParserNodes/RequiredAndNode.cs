@@ -66,26 +66,11 @@ namespace AddyCompiler.Node.Generics
 		{
 			// TODO -- redo
 			bool suc = false;
-			if (_one.GetType() == typeof(RequiredAndNode) || _one.GetType() == typeof(RequiredOrNode) || _one.GetType() == typeof(RequiredNode))
-			{
-				suc = _one.insertNode(n);
-			} 
-			else if(n.GetType() is T)
-			{
-				_one = new RequiredNode(n);
-				suc = true;
-			}
+			suc = _one.insertNode(n);
 			if (suc)
 				return true;
-			if (_two.GetType() == typeof(RequiredAndNode) || _two.GetType() == typeof(RequiredOrNode) || _two.GetType() == typeof(RequiredNode))
-			{
-				suc = _one.insertNode(n);
-			}
-			else if (n.GetType() is U)
-			{
-				_two = new RequiredNode(n);
-				suc = true;
-			}
+
+			suc = _one.insertNode(n);
 			if (suc)
 				return true;
 			return false;

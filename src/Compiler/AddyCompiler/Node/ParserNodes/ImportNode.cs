@@ -13,15 +13,15 @@ namespace AddyCompiler.Node
 			RequiredNode<ImportKeywordNode>,
 			RequiredAndNode<
 				RequiredNode<TextNode>,
-				RequiredOrNode<
-					NullNode,
-					RequiredAndNode<
-						RequiredNode<AsKeywordNode>,
+				RequiredAndNode<
+					RequiredOrNode<
+						NullNode,
 						RequiredAndNode<
-							RequiredNode<IdentifierNode>,
-							RequiredNode<SemiColonNode>
+							RequiredNode<AsKeywordNode>,
+							RequiredNode<IdentifierNode>
 						>
-					>
+					>,
+					RequiredNode<SemiColonNode>
 				>
 			>
 		>

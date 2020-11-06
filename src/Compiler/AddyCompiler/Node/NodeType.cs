@@ -79,6 +79,7 @@ namespace AddyCompiler.Node
         // ----- Parser ----- \\\
         // Neccessities & Generics
         RootNode,
+        TopLevelNode,
         FileScopeStatementNode,
         CodeBodyNode,
         IdentifierListNode,
@@ -89,6 +90,7 @@ namespace AddyCompiler.Node
         GateFlowNode,
         // Compilers & Comments
         CompilerDeclarationNode,
+        ImportBlockNode,
         ImportDeclarationNode,
         // Calls
         FunctionCallNode,
@@ -98,6 +100,8 @@ namespace AddyCompiler.Node
         ArgumentsNode,
         ArgumentsListNode,
         // Declarations
+        DataStructureDeclarationListNode,
+        FunctionDeclarationListNode,
         PrivacyDeclarationNode,
         ScopeDeclarationNode,
         ClassDeclarationNode,

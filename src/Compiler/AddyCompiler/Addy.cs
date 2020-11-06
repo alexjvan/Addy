@@ -33,10 +33,11 @@ namespace AddyCompiler
             co.times[0] = stopWatch.Elapsed;
             stopWatch.Restart();
 
-			// PARSE
+            // PARSE
             //      Convert tokens into nodes
             //      Build AST
-			RootNode root = Pal.Parse(nodes);
+            ParseError[] compileErrors;
+			RootNode root = Pal.Parse(nodes, out compileErrors);
             co.parserOutput = root;
             co.times[1] = stopWatch.Elapsed;
             stopWatch.Restart();
@@ -44,7 +45,15 @@ namespace AddyCompiler
             // RECOGNIZE
             //      Make sure everything has everything that it needs to have (all reqands and reqors are good)
             ParseError[] errorsFound = Rachel.Check(root);
-            co.recognizerOutput = errorsFound;
+
+            // Combine the two error sections
+            ParseError[] collectiveErrors = new ParseError[compileErrors.Length + errorsFound.Length];
+            for (int i = 0; i < compileErrors.Length; i++)
+                collectiveErrors[i] = compileErrors[i];
+            for (int i = 0; i < errorsFound.Length; i++)
+                collectiveErrors[i + compileErrors.Length] = errorsFound[i];
+
+            co.recognizerOutput = collectiveErrors;
             co.times[2] = stopWatch.Elapsed;
             stopWatch.Restart();
 
