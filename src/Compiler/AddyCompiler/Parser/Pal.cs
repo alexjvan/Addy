@@ -26,8 +26,14 @@ namespace AddyCompiler.Parser
             //      (function)*
             //      (statements)*
 
-            // TODO: Add this in too
-            // If can't cast to right thing its an invalid cast exception
+            // EMPTY FILE
+            if(nodes.Length == 0)
+			{
+                TopLevelNode tln = new TopLevelNode(0, 0);
+                rn.insertNode(tln);
+                errors = foundErrors.ToArray();
+                return rn;
+			}
 
             bool doneImports = false;
             while(!done)
@@ -113,10 +119,41 @@ namespace AddyCompiler.Parser
 
         private static TopLevelNode parseTopLevel(LexerNode[] nodes, int nodeIndex, List<ParseError> errors)
         {
+            // Cur node will either be pointing to
+            // The starting node in the file
+            // The node right after the imports
             LexerNode curNode = nodes[nodeIndex];
-            TopLevelNode topLvl = new TopLevelNode(curNode.Row, curNode.Col);
+            TopLevelNode curTop = new TopLevelNode(curNode.Row, curNode.Col);
 
-            return topLvl;
+            // Either start of file and not null
+            // Or just finished with imports & can be null
+            bool done = false;
+            while(!done)
+            {
+                if (nodeIndex == nodes.Length)
+                {
+                    done = true;
+                    continue;
+                }
+                if(curNode.Type == NodeType.ClassKeywordNode ||
+                    curNode.Type == NodeType.GuideKeywordNode ||
+                    curNode.Type == NodeType.SwitchKeywordNode)
+				{
+
+				}
+                else if(curNode.Type == NodeType.FunctionKeywordNode ||
+                    curNode.Type == NodeType.EntryKeywordNode)
+				{
+
+				}
+                else
+				{
+
+				}
+
+            }
+
+            return curTop;
         }
     }
 }
