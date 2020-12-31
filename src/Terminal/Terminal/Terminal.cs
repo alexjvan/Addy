@@ -213,8 +213,6 @@ namespace Terminal
 			}
 		}
 
-
-
 		static void printContents(string dir)
 		{
 			string[] folders = Directory.GetDirectories(dir);
