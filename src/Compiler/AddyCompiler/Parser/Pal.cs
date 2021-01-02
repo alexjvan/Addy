@@ -180,6 +180,10 @@ namespace AddyCompiler.Parser
             ScopeDeclarationNode scope = new ScopeDeclarationNode(curNode.Row, curNode.Col);
 
             // TODO
+            if (curNode.Type == NodeType.LocalKeywordNode)
+                scope.insertNode((LocalKeywordNode)curNode);
+            else if (curNode.Type == NodeType.GlobalKeywordNode)
+                scope.insertNode((GlobalKeywordNode)curNode);
 
             return scope;
         }
@@ -314,23 +318,45 @@ namespace AddyCompiler.Parser
             ClassRepeatableNode cur = new ClassRepeatableNode(curNode.Row, curNode.Col);
 
             bool done = false;
-            while(!done)
+            while (!done)
             {
                 curNode = nodes[nodeIndex];
                 if (curNode.Type == NodeType.CloseBracketToken ||
                     nodeIndex >= nodes.Length)
-				{
+                {
                     done = true;
                     continue;
+                }
+                else if (curNode.Type == NodeType.PublicKeywordNode ||
+                         curNode.Type == NodeType.FriendlyKeywordNode ||
+                         curNode.Type == NodeType.PrivateKeywordNode ||
+                         curNode.Type == NodeType.LocalKeywordNode ||
+                         curNode.Type == NodeType.GlobalKeywordNode)
+                {
+                    // Scope and privacy variables will be handled in function and variable declarations
+                    // No need to interact with them - let them be
+                    continue;
+                }
+                else if (curNode.Type == NodeType.FunctionKeywordNode ||
+                         curNode.Type == NodeType.EntryKeywordNode)
+                {
+                    // TODO
+                }
+                else if (curNode.Type == NodeType.TextKeywordNode ||
+                         curNode.Type == NodeType.NumKeywordNode ||
+                         curNode.Type == NodeType.LogicKeywordNode ||
+                         curNode.Type == NodeType.IdentifierNode)
+				{
+                    // TODO
 				}
-			}
+            }
 
             return cur;
         }
 
         private static FunctionDeclarationListNode parseFunctionDeclarationList(LexerNode[] nodes, int nodeIndex, List<ParseError> errors)
         {
-            // Cur node will either be pointing to a 'function', 'entry'
+            // Cur node will either be pointing to a 'fun', 'entry'
             LexerNode curNode = nodes[nodeIndex];
             FunctionDeclarationListNode curTop = new FunctionDeclarationListNode(curNode.Row, curNode.Col);
 
@@ -352,7 +378,7 @@ namespace AddyCompiler.Parser
 
         private static FunctionDeclarationNode parseFunctionDeclaration(LexerNode[] nodes, int nodeIndex, List<ParseError> errors)
         {
-            // Cur node will either be pointing to a 'function'
+            // Cur node will either be pointing to a 'fun'
             LexerNode curNode = nodes[nodeIndex];
             FunctionDeclarationNode cur = new FunctionDeclarationNode(curNode.Row, curNode.Col);
 

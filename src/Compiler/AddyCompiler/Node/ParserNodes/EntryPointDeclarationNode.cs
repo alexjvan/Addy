@@ -8,34 +8,25 @@ using System.Threading.Tasks;
 namespace AddyCompiler.Node
 {
 	public class EntryPointDeclarationNode : ParserNode<
-		// 'global' 'public' entry('text[] args') {_}
+		// global public entry(text[] args) {_}
 		RequiredAndNode<
-			RequiredOrNode<
-				RequiredNode<ScopeDeclarationNode>,
-				NullNode
-			>,
+			RequiredNode<ScopeDeclarationNode>,
 			RequiredAndNode<
-				RequiredOrNode<
-					RequiredNode<PrivacyDeclarationNode>,
-					NullNode
-				>,
+				RequiredNode<PrivacyDeclarationNode>,
 				RequiredAndNode<
 					RequiredNode<EntryKeywordNode>,
 					RequiredAndNode<
 						RequiredNode<OpenParenthesisNode>,
 						RequiredAndNode<
-							RequiredOrNode<
+							RequiredAndNode<
+								RequiredNode<TextKeywordNode>,
 								RequiredAndNode<
-									RequiredNode<TextKeywordNode>,
+									RequiredNode<OpenBraceNode>,
 									RequiredAndNode<
-										RequiredNode<OpenBraceNode>,
-										RequiredAndNode<
-											RequiredNode<CloseBraceNode>,
-											RequiredNode<IdentifierNode>
-										>
+										RequiredNode<CloseBraceNode>,
+										RequiredNode<IdentifierNode>
 									>
-								>,
-								NullNode
+								>
 							>,
 							RequiredAndNode<
 								RequiredNode<CloseParenthesisNode>,

@@ -12,7 +12,7 @@ namespace AddyCompiler.Node
 			RequiredNode<ClassRepeatableNode>,
 			RequiredOrNode<
 				RequiredOrNode<
-					RequiredNode<FunctionDeclarationNode>,
+					RequiredNode<FunctionDeclarationListNode>,
 					RequiredNode<VariableDeclarationNode>
 				>,
 				NullNode
